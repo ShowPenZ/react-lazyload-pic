@@ -1,9 +1,9 @@
-import React from "react";
-import "intersection-observer";
-import ClassNames from "classnames";
-import PropTypes from "prop-types";
+import React from 'react';
+import 'intersection-observer';
+import ClassNames from 'classnames';
+import PropTypes from 'prop-types';
 
-import "./index.css";
+import './index.css';
 
 class PicLazyLoad extends React.Component {
   static propTypes = {
@@ -12,15 +12,15 @@ class PicLazyLoad extends React.Component {
     img: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
     imgClassName: PropTypes.string,
-    skeleton: PropTypes.string
+    skeleton: PropTypes.string,
   };
 
   static defaultProps = {
-    alt: ""
+    alt: '',
   };
 
   state = {
-    loaded: false
+    loaded: false,
   };
 
   render() {
@@ -30,20 +30,16 @@ class PicLazyLoad extends React.Component {
 
     const onLoad = () => {
       that.setState({
-        loaded: true
+        loaded: true,
       });
     };
 
     return (
       <div className="container">
         {loaded ? (
-          <img
-            className={ClassNames("defaultImg", imgClassName)}
-            src={img}
-            alt={alt}
-          />
+          <img className={ClassNames('defaultImg', imgClassName)} src={img} alt={alt} />
         ) : (
-          <div className={ClassNames("skeleton1", skeleton)}></div>
+          <div className={ClassNames('skeleton1', skeleton)}></div>
         )}
         <img className="noShow" src={img} alt={alt} onLoad={onLoad} />
       </div>
@@ -55,26 +51,25 @@ class LazyLoadPic extends React.Component {
   static propTypes = {
     imgClassName: PropTypes.string,
     imgBoxClassName: PropTypes.string,
-    alt: PropTypes.string
+    alt: PropTypes.string,
   };
 
   static defaultProps = {
-    alt: ""
+    alt: '',
   };
 
   state = {
-    imgBlob: []
+    imgBlob: [],
   };
 
   getBase64 = (imgUrl, callback) => {
     let xhr = new XMLHttpRequest();
 
-    xhr.open("get", imgUrl, true);
-    xhr.responseType = "blob";
+    xhr.open('get', imgUrl, true);
+    xhr.responseType = 'blob';
 
     xhr.onload = e => {
       if (e.target.status === 200) {
-        //得到一个blob对象
         const blob = e.target.response;
         const oFileReader = new FileReader();
 
@@ -94,7 +89,7 @@ class LazyLoadPic extends React.Component {
     const { imgBlob } = that.state;
 
     that.setState({
-      imgBlob: imgBlob.concat(e)
+      imgBlob: imgBlob.concat(e),
     });
   };
 
@@ -124,7 +119,7 @@ class LazyLoadPic extends React.Component {
         });
       },
       {
-        threshold // 添加触发时机数组
+        threshold, // 添加触发时机数组
       }
     );
 
@@ -136,13 +131,7 @@ class LazyLoadPic extends React.Component {
   render() {
     const that = this;
     const { imgBlob } = that.state;
-    const {
-      alt,
-      imgClassName,
-      imgBoxClassName,
-      boxClassName,
-      imgArr
-    } = that.props;
+    const { alt, imgClassName, imgBoxClassName, boxClassName, imgArr } = that.props;
 
     let images = [];
     let refs = [];
@@ -153,15 +142,12 @@ class LazyLoadPic extends React.Component {
       refs.push(ref);
 
       return images.push(
-        <div className={ClassNames("defaultImageBox", imgBoxClassName)} key={i}>
+        <div className={ClassNames('defaultImageBox', imgBoxClassName)} key={i}>
           <img
             key={i}
-            className={ClassNames(
-              imgBlob.length > 0 ? "" : "L-skeleton1",
-              imgClassName
-            )}
+            className={ClassNames(imgBlob.length > 0 ? '' : 'L-skeleton1', imgClassName)}
             ref={ref}
-            src={imgBlob.length > 0 ? imgBlob[i] : ""}
+            src={imgBlob.length > 0 ? imgBlob[i] : ''}
             alt=""
             data-src={d.url}
           />
@@ -170,7 +156,7 @@ class LazyLoadPic extends React.Component {
     });
 
     const LazyLoadImg = (
-      <div className={ClassNames("box", boxClassName)}>
+      <div className={ClassNames('box', boxClassName)}>
         {images}
         <img onError={() => that.onload(refs)} src="" alt={alt} />
       </div>

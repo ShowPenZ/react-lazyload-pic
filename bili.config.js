@@ -16,14 +16,14 @@ module.exports = {
   globals: {
     react: 'React',
   },
-  input: 'src/Index.jsx',
+  input: 'src/index.jsx',
   output: {
     dir: 'dist',
     extractCSS: false,
     // fileName: '[name][suffix].js',
     format: ['cjs-min', 'es-min', 'umd-min'],
     minify: true,
-    moduleName: 'Index',
+    moduleName: 'lazyload-pic',
     sourceMap: true,
     sourceMapExcludeSources: true,
     target: 'browser',
