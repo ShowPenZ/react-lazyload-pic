@@ -1,4 +1,4 @@
-[English](./README_en-US.md) | 中文
+[English](https://github.com/ShowPenZ/react-lazyload-pic/blob/master/README_en-US.md) | 中文
 
 
 # react-lazyload-pic
