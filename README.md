@@ -18,7 +18,7 @@ $ yarn add react-lazyload-pic
 
 ![lazyloadlist.gif](https://i.loli.net/2019/12/09/1SF9QoBCuiMOW63.gif)
 ```javascript
-import { LazyLoadPic } from "react-lazyload-pic";
+import { PicLazyLoad } from "react-lazyload-pic";
 import Sevn from '@/assets/sevn.jpg'
 
 class App extends React.Component {
