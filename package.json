@@ -1,6 +1,6 @@
 {
   "name": "react-lazyload-pic",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "a lazyload-pic component for React",
   "main": "dist/index.min.js",
   "scripts": {
